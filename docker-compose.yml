@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bd_snowflake_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pet_store
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./исходные данные:/data"
+      - ./scripts:/docker-entrypoint-initdb.d
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
